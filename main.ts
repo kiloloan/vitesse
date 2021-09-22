@@ -10,6 +10,12 @@ input.onPinPressed(TouchPin.P0, function () {
         # . . . .
         `)
 })
+input.onButtonPressed(Button.A, function () {
+    Annonce = 1
+})
+input.onButtonPressed(Button.B, function () {
+    Annonce = 0
+})
 input.onPinPressed(TouchPin.P1, function () {
     t1 = input.runningTime()
     basic.showIcon(IconNames.Yes)
@@ -27,10 +33,12 @@ let duree_en_seconde = 0
 let duree = 0
 let t1 = 0
 let t0 = 0
+let Annonce = 0
 let mesure_en_cours = 0
 let distance = 0
 distance = 1
 mesure_en_cours = 0
+Annonce = 0
 basic.showLeds(`
     . . . . .
     . . . . .
@@ -41,5 +49,8 @@ basic.showLeds(`
 basic.forever(function () {
     if (mesure_en_cours != 1) {
         basic.showIcon(IconNames.Happy)
+        if (Annonce == 1) {
+            basic.showString("Lou FabiLoub ## Mesurez votre vitesse ###")
+        }
     }
 })
